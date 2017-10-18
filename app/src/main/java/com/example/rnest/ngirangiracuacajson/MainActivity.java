@@ -1,6 +1,5 @@
 package com.example.rnest.ngirangiracuacajson;
 
-import android.app.VoiceInteractor;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,10 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText txt_city;
     private Button button;
-    private TextView result_id, result_main, result_description, result_icon, result_temp, result_pres, result_hum, result_temp_min, result_temp_max, result_sea, result_gnd;
+    private TextView result_id, result_main, result_description, result_icon, result_temp, result_pres, result_hum;
     private RequestQueue requestQueue;
     private ImageView imageIcon;
-
+    private String tmpo_id, tmpo_main, tmpo_description, tmpo_icon, tmpo_temp, tmpo_pres, tmpo_hum;
+    private Integer  tmpo_imageIcon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +48,6 @@ public class MainActivity extends AppCompatActivity {
         result_temp         = (TextView) findViewById(R.id.result_temp);
         result_pres         = (TextView) findViewById(R.id.result_pres);
         result_hum          = (TextView) findViewById(R.id.result_hum);
-        result_temp_min     = (TextView) findViewById(R.id.result_temp_min);
-        result_temp_max     = (TextView) findViewById(R.id.result_temp_max);
-        result_sea          = (TextView) findViewById(R.id.result_sea);
-        result_gnd          = (TextView) findViewById(R.id.result_gnd);
         imageIcon           = (ImageView) findViewById(R.id.imageIcon);
     }
 
@@ -74,25 +70,6 @@ public class MainActivity extends AppCompatActivity {
                     final String tmp_temp = response.getJSONObject("main").getString("temp");
                     final String tmp_pres = response.getJSONObject("main").getString("pressure");
                     final String tmp_hum = response.getJSONObject("main").getString("humidity");
-
-                    final String tmp_temp_min = response.getJSONObject("main").getString("temp_min");
-                    final String tmp_temp_max = response.getJSONObject("main").getString("temp_max");
-
-                    //final String tmp_sea = response.getJSONObject("main").getString("sea_level");
-                    //final String tmp_gnd = response.getJSONObject("main").getString("grnd_level");
-
-                    result_id.setText(tmp_id);
-                    result_main.setText(tmp_main);
-                    result_description.setText(tmp_description);
-                    result_icon.setText(tmp_icon);
-
-                    result_temp.setText(tmp_temp);
-                    result_pres.setText(tmp_pres);
-                    result_hum.setText(tmp_hum);
-                    result_temp_min.setText(tmp_temp_min);
-                    result_temp_max.setText(tmp_temp_max);
-                    //result_sea.setText(tmp_sea);
-                    //result_gnd.setText(tmp_gnd);
 
                     Map<String, Integer> iconMap = new HashMap<>();
                     iconMap.put("00d", R.drawable.i00);
@@ -205,7 +182,24 @@ public class MainActivity extends AppCompatActivity {
 
                     final Integer drawableId = iconMap.get(tmp_icon);
                     //Log.i(TAG, "Icon ID" + iconId + "-> Drawable ID" + drawableId);
+
+                    result_id.setText(tmp_id);
+                    result_main.setText(tmp_main);
+                    result_description.setText(tmp_description);
+                    result_icon.setText(tmp_icon);
+                    result_temp.setText(tmp_temp);
+                    result_pres.setText(tmp_pres);
+                    result_hum.setText(tmp_hum);
                     imageIcon.setImageResource(drawableId);
+
+                    tmpo_id = tmp_id;
+                    tmpo_main = tmp_main;
+                    tmpo_description = tmp_description;
+                    tmpo_icon = tmp_icon;
+                    tmpo_temp = tmp_temp;
+                    tmpo_pres = tmp_pres;
+                    tmpo_hum = tmp_hum;
+                    tmpo_imageIcon = drawableId;
 
                 } catch(JSONException e) {
                     Log.e("MainAcivity", "JSON ERROR");
@@ -219,4 +213,38 @@ public class MainActivity extends AppCompatActivity {
         });
         requestQueue.add(jsonReq);
     }
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        outState.putString("result_id", tmpo_id);
+        outState.putString("result_main", tmpo_main);
+        outState.putString("result_description", tmpo_description);
+        outState.putString("result_icon", tmpo_icon);
+        outState.putString("result_temp", tmpo_temp);
+        outState.putString("result_pres", tmpo_pres);
+        outState.putString("result_hum", tmpo_hum);
+        outState.putInt("result_img", tmpo_imageIcon);
+        super.onSaveInstanceState(outState);
+    }
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
+        tmpo_id = savedInstanceState.getString("result_id");
+        tmpo_main = savedInstanceState.getString("result_main");
+        tmpo_description = savedInstanceState.getString("result_description");
+        tmpo_icon = savedInstanceState.getString("result_icon");
+        tmpo_temp = savedInstanceState.getString("result_temp");
+        tmpo_pres = savedInstanceState.getString("result_pres");
+        tmpo_hum = savedInstanceState.getString("result_hum");
+        tmpo_imageIcon = savedInstanceState.getInt("result_img");
+
+        result_id.setText(tmpo_id);
+        result_main.setText(tmpo_main);
+        result_description.setText(tmpo_description);
+        result_icon.setText(tmpo_icon);
+        result_temp.setText(tmpo_temp);
+        result_pres.setText(tmpo_pres);
+        result_hum.setText(tmpo_hum);
+        imageIcon.setImageResource(tmpo_imageIcon);
+    }
+
 }

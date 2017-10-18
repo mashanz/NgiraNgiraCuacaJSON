@@ -7,8 +7,8 @@
     tools:context="com.example.rnest.ngirangiracuacajson.MainActivity">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -18,7 +18,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
 
         <Button
             android:id="@+id/button"
@@ -73,12 +75,10 @@
             android:id="@+id/result_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="result_id"
             android:layout_above="@+id/result_main"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="121dp"
-            android:layout_marginRight="121dp"
-            android:text="result_id" />
+            android:layout_toRightOf="@+id/textView10"
+            android:layout_toEndOf="@+id/textView10" />
 
         <TextView
             android:id="@+id/result_main"
@@ -168,49 +168,13 @@
             android:text="Humidity" />
 
         <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView13"
-            android:text="Temp_min" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView14"
-            android:text="Temp_max" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView15"
-            android:text="Sea Level" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView16"
-            android:text="Ground Level" />
-
-        <TextView
             android:id="@+id/result_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/result_icon"
-            android:layout_alignStart="@+id/result_icon"
+            android:text="result_temp"
             android:layout_below="@+id/textView10"
-            android:text="result_temp" />
+            android:layout_toRightOf="@+id/textView10"
+            android:layout_toEndOf="@+id/textView10" />
 
         <TextView
             android:id="@+id/result_pres"
@@ -230,49 +194,12 @@
             android:layout_below="@+id/result_pres"
             android:text="result_hum" />
 
-        <TextView
-            android:id="@+id/result_temp_min"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/result_hum"
-            android:layout_alignStart="@+id/result_hum"
-            android:layout_below="@+id/result_hum"
-            android:text="result_temp_min" />
-
-        <TextView
-            android:id="@+id/result_temp_max"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/result_temp_min"
-            android:layout_alignStart="@+id/result_temp_min"
-            android:layout_below="@+id/result_temp_min"
-            android:text="result_temp_max" />
-
-        <TextView
-            android:id="@+id/result_sea"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/result_temp_max"
-            android:layout_alignStart="@+id/result_temp_max"
-            android:layout_below="@+id/result_temp_max"
-            android:text="result_sea" />
-
-        <TextView
-            android:id="@+id/result_gnd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/result_sea"
-            android:layout_alignStart="@+id/result_sea"
-            android:layout_below="@+id/result_sea"
-            android:text="result_gnd" />
-
         <ImageView
             android:id="@+id/imageIcon"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_below="@+id/result_gnd"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="13dp"
-            app:srcCompat="@mipmap/ic_launcher" />
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:srcCompat="@drawable/backdrop"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
