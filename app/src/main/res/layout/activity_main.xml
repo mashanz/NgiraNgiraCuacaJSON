@@ -26,13 +26,14 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/txt_city"
+            android:layout_toLeftOf="@+id/result_id"
+            android:layout_toStartOf="@+id/result_id"
+            android:drawableLeft="@android:drawable/ic_menu_send"
             android:onClick="loadweather"
-            android:text="Load Weather" />
+            android:text="Weather" />
 
         <TextView
             android:id="@+id/txt_id"
@@ -201,5 +202,17 @@
             app:srcCompat="@drawable/backdrop"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_city"
+            android:layout_toEndOf="@+id/button"
+            android:layout_toRightOf="@+id/button"
+            android:drawableLeft="@android:drawable/ic_menu_compass"
+            android:onClick="locationFinder"
+            android:text="HERE" />
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
