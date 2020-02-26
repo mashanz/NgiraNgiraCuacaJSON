@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidStudioProjects-NgiraNgiraCuacaJSON.iml" filepath="$PROJECT_DIR$/AndroidStudioProjects-NgiraNgiraCuacaJSON.iml" group="NgiraNgiraCuacaJSON" />
       <module fileurl="file://$PROJECT_DIR$/NgiraNgiraCuacaJSON.iml" filepath="$PROJECT_DIR$/NgiraNgiraCuacaJSON.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/NgiraNgiraCuacaJSON-app.iml" filepath="$PROJECT_DIR$/app/NgiraNgiraCuacaJSON-app.iml" group="NgiraNgiraCuacaJSON/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
